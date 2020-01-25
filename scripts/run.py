@@ -15,6 +15,9 @@ def main():
     return 0
 
 def find_colors():
+    for plugin in discovered_plugins:
+        funcs = dir(plugin)
+        print(funcs)
     return COLORS.keys()
 
 @main.command()
