@@ -16,8 +16,9 @@ def main():
 
 def find_colors():
     for plugin in discovered_plugins.keys():
-        if not plugin in COLORS:
-            COLORS[plugin] = discovered_plugins[plugin]
+        upper = plugin.upper()
+        if not upper in COLORS:
+            COLORS[upper] = discovered_plugins[plugin]
     return COLORS.keys()
 
 @main.command()
