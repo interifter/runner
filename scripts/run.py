@@ -18,7 +18,7 @@ def find_colors():
     for plugin in discovered_plugins.keys():
         upper = plugin.upper()
         if not upper in COLORS:
-            COLORS[upper] = discovered_plugins[plugin]
+            COLORS[upper] = getattr(discovered_plugins[plugin], 'ride')
     return COLORS.keys()
 
 @main.command()
