@@ -20,9 +20,8 @@ def find_plugin_info(name, collection):
     for plugin in discovered_plugins.keys():
         upper = plugin.upper()
         if not upper in collection:
-            name_attr = getattr(discovered_plugins[plugin], name)
-            if name_attr:
-                collection[upper] = name_attr
+            if hasattr(discovered_plugins[plugin], name):
+                collection[upper] = getattr(discovered_plugins[plugin], name)
     return collection.keys()
 
 
