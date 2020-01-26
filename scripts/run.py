@@ -47,7 +47,7 @@ def mix(first, second):
     if first == second:
         raise ColorException("Cannot mix the same color")
 
-    return MIXERS[first](MIXERS[second])
+    click.echo(MIXERS[first](MIXERS[second]))
 
 
 
