@@ -2,7 +2,7 @@ import pkg_resources
 
 import click
 
-from colors import COLORS, WRITERS
+from colors import COLORS, WRITERS, MIXERS, ColorException
 
 discovered_plugins = {
     entry_point.name: entry_point.load()
@@ -37,6 +37,19 @@ def ride(color):
 def write(color):
     color = color.upper()
     click.echo(WRITERS[color]())
+
+@main.command()
+@click.argument('first', type=click.Choice(find_plugin_info('write', MIXERS), case_sensitive=False))
+@click.argument('second', type=click.Choice(find_plugin_info('write', MIXERS), case_sensitive=False))
+def mix(first, second):
+    first = first.upper()
+    second = second.upper()
+    if first == second:
+        raise ColorException("Cannot mix the same color")
+
+    return MIXERS[first](MIXERS[second])
+
+
 
 @main.command()
 def plugins():
