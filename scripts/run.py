@@ -39,8 +39,8 @@ def write(color):
     click.echo(WRITERS[color]())
 
 @main.command()
-@click.argument('first', type=click.Choice(find_plugin_info('write', MIXERS), case_sensitive=False))
-@click.argument('second', type=click.Choice(find_plugin_info('write', MIXERS), case_sensitive=False))
+@click.argument('first', type=click.Choice(find_plugin_info('mix', MIXERS), case_sensitive=False))
+@click.argument('second', type=click.Choice(find_plugin_info('mix', MIXERS), case_sensitive=False))
 def mix(first, second):
     first = first.upper()
     second = second.upper()
